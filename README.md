@@ -14,3 +14,9 @@ The React Compiler is not enabled on this template because of its impact on dev 
 ## Expanding the Oxlint configuration
 
 If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+
+
+"PARTE MARJORIE"
+hola profe en el mascotaslist, en la linea 44 hay un comentario que no me deja poner pork no me deja usar las // :C entonces de lo dejo aqui el cual es el que renderice la imagen de las mascotas y tambien en mascotas detalles.jsx en la linea 38 tambien va un comentario, pero me paso lo mismo lo que le dije y este es el comentario Mostramos la imagen en grande para el detalle en la api ;D y casi me olvido me ayude un poco de la ia de geminis, por esta parte de mascotas detalle   if (cargando) return <p>Cargando detalle...</p>;
+  if (error) return <p>{error}</p>;
+  if (!mascota) return <p>Mascota no encontrada.</p>;ya que queriamos que se viera mas ordenado y tambien me sirvio con el css pork busque un tutorial en yt y no entendi nada XD pork no explicaban y me salia todo en x2 :C
