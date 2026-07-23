@@ -1,9 +1,10 @@
+import React from "react";
 import MascotasList from "../components/mascotas/MascotasList";
 
 function MascotasPage(){
     return (
         <>
-            <h1>Pagina de Mascotas</h1>
+            <h2>Listado General de Mascotas</h2>
 
             <MascotasList />
         </>
