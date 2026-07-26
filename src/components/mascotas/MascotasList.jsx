@@ -86,7 +86,7 @@ function MascotasList() {
                             Editar
                         </Link>
 
-                        <button onClick={() => eliminarMascota(mascota.id)} style={{marginTop: '10px', marginLeft: '10px'}}>
+                        <button onClick={() => eliminarMascota(mascota.id)} style={{ backgroundColor: '#eeafa7', color: 'black', border: 'none', padding: '8px', borderRadius: '5px', cursor: 'pointer', marginLeft: '10px'}}>
                             Eliminar
                         </button>
                     </div>

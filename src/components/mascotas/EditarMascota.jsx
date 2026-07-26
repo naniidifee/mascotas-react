@@ -99,8 +99,9 @@ function EditarMascota() {
         }
     };
     return (
-        <div>
-            <h2>Editar Mascota</h2>
+        <div style={{ display: 'flex', justifyContent: 'center', marginTop: '30px'}}>
+            <div style={{ width: '500px', backgroundColor: '#fff', padding: '25px', borderRadius: '10px'}}>
+                <h2 style={{ textAlign: 'center', color: '#dfa21e'}}>Editar Mascota</h2>
             <form onSubmit={actualizarMascota} style={{ display: 'flex', flexDirection: 'column', gap: '12px', maxWidth: '500px'}}>
                 <label>Nombre:</label>
                 <input type="text" name="nombre" value={mascota.nombre} onChange={manejarCambio}/>
@@ -153,11 +154,11 @@ function EditarMascota() {
                 <label>Imagen:</label>
                 <input type="file" onChange={manejarImagen}/>
                 
-                <button type="submit">
+                <button type="submit" style={{ backgroundColor: '#dfa21e', color: 'white', border: 'none', padding: '10px', borderRadius: '5px', cursor: 'pointer'}}>
                     Guardar cambios
                 </button>
             </form>
-            
+            </div>      
         </div>
     );
 }

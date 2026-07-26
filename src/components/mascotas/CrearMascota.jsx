@@ -91,63 +91,69 @@ function CrearMascota() {
 };
 
     return (
-        <div>
-            <h2>Registrar nueva mascota</h2>
-            <form onSubmit={guardarMascota} style={{ display: 'flex', flexDirection: 'column', gap: '12px', maxWidth: '500px'}}>
-                <label>Nombre:</label>
-                <input type="text" name="nombre" value={mascota.nombre} onChange={manejarCambio}/>
+        <div style={{ display: 'flex', justifyContent: 'center', marginTop: '30px'}}>
+            <div style={{ width: '500px', padding: '25px', borderRadius: '10px', backgroundColor: '#fff' }}>
 
-                <label>Tipo animal:</label>
-                <select name="tipo_animal" value={mascota.tipo_animal} onChange={manejarCambio}>
-                    <option value="">---------</option>
-                    <option value="perro">Perro</option>
-                    <option value="gato">Gato</option>
-                    <option value="ave">Ave</option>
-                    <option value="roedor">Roedor</option>
-                    <option value="reptil">Reptil</option>
-                    <option value="otro">Otro</option>
-                </select>
+                <h2 style={{ textAlign: 'center', color: '#40b2d4'}}>Registrar nueva mascota</h2>
 
-                <label>Raza:</label>
-                <input type="text" name="raza" value={mascota.raza} onChange={manejarCambio}/>
+                <form onSubmit={guardarMascota} style={{display: 'flex', flexDirection: 'column', gap: '12px', maxWidth: '500px'}}>
+                    <label>Nombre:</label>
+                    <input type="text" name="nombre" value={mascota.nombre} onChange={manejarCambio}/>
 
-                <label>Edad:</label>
-                <input type="number" name="edad" min="0" value={mascota.edad} onChange={manejarCambio}/>
+                    <label>Tipo animal:</label>
+                    <select name="tipo_animal" value={mascota.tipo_animal} onChange={manejarCambio}>
+                        <option value="">---------</option>
+                        <option value="perro">Perro</option>
+                        <option value="gato">Gato</option>
+                        <option value="ave">Ave</option>
+                        <option value="roedor">Roedor</option>
+                        <option value="reptil">Reptil</option>
+                        <option value="otro">Otro</option>
+                    </select>
 
-                <label>Tamaño:</label>
-                <select name="tamano" value={mascota.tamano} onChange={manejarCambio}>
-                    <option value="">---------</option>
-                    <option value="pequeno">Pequeño</option>
-                    <option value="mediano">Mediano</option>
-                    <option value="grande">Grande</option>
-                    <option value="desconocido">Desconocido</option>
-                </select>
+                    <label>Raza:</label>
+                    <input type="text" name="raza" value={mascota.raza} onChange={manejarCambio}/>
 
-                <label>Descripcion:</label>
-                <textarea name="descripcion" value={mascota.descripcion} onChange={manejarCambio}/>
+                    <label>Edad:</label>
+                    <input type="number" name="edad" min="0" value={mascota.edad} onChange={manejarCambio}/>
 
-                <label>Estado:</label>
-                <select name="estado" value={mascota.estado} onChange={manejarCambio}>
-                    <option value="">---------</option>
-                    <option value="perdida">Perdida</option>
-                    <option value="encontrada">Encontrada</option>
-                    <option value="adoptada">Adoptada</option>
-                    <option value="en_adopcion">En adopcion</option>
-                </select>
+                    <label>Tamaño:</label>
+                    <select name="tamano" value={mascota.tamano} onChange={manejarCambio}>
+                        <option value="">---------</option>
+                        <option value="pequeno">Pequeño</option>
+                        <option value="mediano">Mediano</option>
+                        <option value="grande">Grande</option>
+                        <option value="desconocido">Desconocido</option>
+                    </select>
 
-                <label>Sexo:</label>
-                <select name="sexo" value={mascota.sexo} onChange={manejarCambio}>
-                    <option value="">---------</option>
-                    <option value="macho">Macho</option>
-                    <option value="hembra">Hembra</option>
-                    <option value="desconocido">Desconocido</option>
-                </select>
+                    <label>Descripcion:</label>
+                    <textarea name="descripcion" value={mascota.descripcion} onChange={manejarCambio}/>
 
-                <label>Imagen:</label>
-                <input type="file" onChange={manejarImagen}/>
+                    <label>Estado:</label>
+                    <select name="estado" value={mascota.estado} onChange={manejarCambio}>
+                        <option value="">---------</option>
+                        <option value="perdida">Perdida</option>
+                        <option value="encontrada">Encontrada</option>
+                        <option value="adoptada">Adoptada</option>
+                        <option value="en_adopcion">En adopcion</option>
+                    </select>
 
-                <button type="submit">Guardar mascota</button>
-            </form>
+                    <label>Sexo:</label>
+                    <select name="sexo" value={mascota.sexo} onChange={manejarCambio}>
+                        <option value="">---------</option>
+                        <option value="macho">Macho</option>
+                        <option value="hembra">Hembra</option>
+                        <option value="desconocido">Desconocido</option>
+                    </select>
+
+                    <label>Imagen:</label>
+                    <input type="file" onChange={manejarImagen}/>
+
+                    <button type="submit" style={{ backgroundColor: '#40b2d4', color: 'white', border: 'none', padding: '10px', borderRadius: '5px', cursor: 'pointer'}}>
+                        Guardar mascota
+                    </button>
+                </form>
+            </div>
         </div>
     );
 }
