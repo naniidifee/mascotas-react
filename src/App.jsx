@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route, NavLink } from 'react-router-do
 import MascotasPage from './pages/MascotasPage';
 import MascotaDetalle from './components/mascotas/MascotasDetalle';
 import CrearMascota from './components/mascotas/CrearMascota';
+import EditarMascota from './components/mascotas/EditarMascota';
 
 function App() {
   return (
@@ -20,8 +21,9 @@ function App() {
         <div style={{ padding: '0 20px' }}>
           <Routes>
             <Route path="mascotas/" element={<MascotasPage />} />
-            <Route path='mascotas/nueva' element={<CrearMascota />} />
+            <Route path='/mascotas/nueva' element={<CrearMascota />} />
             <Route path="mascotas/:id" element={<MascotaDetalle />} />
+            <Route path="/mascotas/:id/editar" element={<EditarMascota />} />
           </Routes>
         </div>
       </Router>

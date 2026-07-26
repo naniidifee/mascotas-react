@@ -58,6 +58,18 @@ function CrearMascota() {
 
         console.log("Mascota registrada:", respuesta.data);
         alert("Mascota registrada exitosamente");
+
+        setMascota({
+            nombre: "",
+            tipo_animal: "",
+            raza: "",
+            edad: "",
+            tamano: "",
+            descripcion: "",
+            estado: "",
+            sexo: "",
+            imagen: null
+        });
         
     } catch (error) {
         console.error("Error al registrar mascota:", error);
@@ -125,8 +137,8 @@ function CrearMascota() {
                     <option value="">---------</option>
                     <option value="perdida">Perdida</option>
                     <option value="encontrada">Encontrada</option>
-                    <option value="adoptada">En adopcion</option>
-                    <option value="en_adopcion">Adoptada</option>
+                    <option value="adoptada">Adoptada</option>
+                    <option value="en_adopcion">En adopcion</option>
                 </select>
 
                 <label>Sexo:</label>
