@@ -63,27 +63,37 @@ function CrearMascota() {
         console.error("Error al registrar mascota:", error);
 
         if (error.response) {
-            console.log("respuesta del servidor:", error.response.data);
 
-            alert(
-                JSON.stringify(error.response.data)
-            );
+            if (error.response.status === 400) {
+                alert("Datos invalidos");
+            }
+
+            else if (error.response.status === 404) {
+                alert("No se encontro el recurso");
+            }
+            else {
+                alert("Error del servidor");
+            }
+
+            console.log(error.response.data);
         } else {
             alert("No se pudo conectar");
+
         }
+
     }
 };
 
     return (
         <div>
             <h2>Registrar nueva mascota</h2>
-            <form onSubmit={guardarMascota}>
+            <form onSubmit={guardarMascota} style={{ display: 'flex', flexDirection: 'column', gap: '12px', maxWidth: '500px'}}>
                 <label>Nombre:</label>
                 <input type="text" name="nombre" value={mascota.nombre} onChange={manejarCambio}/>
 
                 <label>Tipo animal:</label>
                 <select name="tipo_animal" value={mascota.tipo_animal} onChange={manejarCambio}>
-                    <option value="">Seleccione tipo</option>
+                    <option value="">---------</option>
                     <option value="perro">Perro</option>
                     <option value="gato">Gato</option>
                     <option value="ave">Ave</option>
@@ -96,12 +106,12 @@ function CrearMascota() {
                 <input type="text" name="raza" value={mascota.raza} onChange={manejarCambio}/>
 
                 <label>Edad:</label>
-                <input type="text" name="edad" value={mascota.edad} onChange={manejarCambio}/>
+                <input type="number" name="edad" min="0" value={mascota.edad} onChange={manejarCambio}/>
 
                 <label>Tamaño:</label>
                 <select name="tamano" value={mascota.tamano} onChange={manejarCambio}>
-                    <option value="">Seleccione tamaño</option>
-                    <option value="pequeno">Pequeño</option>
+                    <option value="">---------</option>
+                    <option value="pequeño">Pequeño</option>
                     <option value="mediano">Mediano</option>
                     <option value="grande">Grande</option>
                     <option value="desconocido">Desconocido</option>
@@ -112,16 +122,16 @@ function CrearMascota() {
 
                 <label>Estado:</label>
                 <select name="estado" value={mascota.estado} onChange={manejarCambio}>
-                    <option value="">Seleccione estado</option>
+                    <option value="">---------</option>
                     <option value="perdida">Perdida</option>
                     <option value="encontrada">Encontrada</option>
-                    <option value="adoptada">Adoptada</option>
-                    <option value="En_adopcion">En Adopcion</option>
+                    <option value="adoptada">En adopcion</option>
+                    <option value="en_adopcion">Adoptada</option>
                 </select>
 
                 <label>Sexo:</label>
                 <select name="sexo" value={mascota.sexo} onChange={manejarCambio}>
-                    <option value="">Seleccione sexo</option>
+                    <option value="">---------</option>
                     <option value="macho">Macho</option>
                     <option value="hembra">Hembra</option>
                     <option value="desconocido">Desconocido</option>

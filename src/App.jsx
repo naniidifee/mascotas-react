@@ -2,13 +2,18 @@ import { BrowserRouter as Router, Routes, Route, NavLink } from 'react-router-do
 import MascotasPage from './pages/MascotasPage';
 import MascotaDetalle from './components/mascotas/MascotasDetalle';
 import CrearMascota from './components/mascotas/CrearMascota';
+
 function App() {
   return (
     <>
       <Router>
         <nav style={{ padding: '15px', backgroundColor: '#f5f5f5', marginBottom: '20px' }}>
-          <NavLink to={"mascotas/"} style={{ fontWeight: 'bold', textDecoration: 'none', color: '#333' }}>
+          <NavLink to={"/mascotas/"} style={{ fontWeight: 'bold', textDecoration: 'none', color: '#333' }}>
             Mascotas
+          </NavLink>
+
+          <NavLink to="/mascotas/nueva" style={{fontWeight: 'bold', textDecoration: 'none', color: '#333', marginLeft: '20px'}}>
+            Registrar Mascota
           </NavLink>
         </nav>
         
