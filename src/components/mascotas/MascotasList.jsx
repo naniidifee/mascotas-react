@@ -6,6 +6,7 @@ function MascotasList() {
     const [mascotasList, setMascotasList] = useState([]);
 
     const fetchMascotas = async () => {
+
         try {
             // Vamos a Agregar a la ruta 'mascotas/' al get()
             const response = await mascotasApi.get('mascotas/');
@@ -15,13 +16,44 @@ function MascotasList() {
         } catch (error) {
             console.log("Error al cargar mascotas:", error);
         }
-    }
+    };
+
+    const eliminarMascota = async (id) => {
+
+        const confirmar = confirm("¿Esta segura de eliminar esta mascota?");
+
+        if (!confirmar) {
+            return;
+        }
+
+        try {
+            await mascotasApi.delete(`mascotas/${id}/`);
+            alert("Mascota eliminada correctamente");
+            fetchMascotas();
+
+        } catch (error) {
+            console.error("Error al eliminar mascota:", error);
+
+            if (error.response) {
+
+                if (error.response.status === 404) {
+                    alert("Mascota no encontrada");
+                }
+
+                else {
+                    alert("Error del servidor");
+                }
+            } else {
+                alert("No se puso conectar");
+            }
+        }
+    };
 
     useEffect(() => {
          // Continuamos con una función para que busque los datos al cargar la página
         fetchMascotas();
     }, []);
-  
+    
     return(
         // recorremos el arreglo mascotasList para mostrar cada mascota y le ponemos algo de css para k se vea pretty
         <>
@@ -53,6 +85,10 @@ function MascotasList() {
                         <Link to={`/mascotas/${mascota.id}/editar`} style={{ display: 'inline-block', marginTop: '10px', marginLeft: '10px' }}>
                             Editar
                         </Link>
+
+                        <button onClick={() => eliminarMascota(mascota.id)} style={{marginTop: '10px', marginLeft: '10px'}}>
+                            Eliminar
+                        </button>
                     </div>
                 ))}
             </div>
