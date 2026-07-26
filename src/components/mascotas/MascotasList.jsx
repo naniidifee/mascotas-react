@@ -49,6 +49,10 @@ function MascotasList() {
                         <Link to={`/mascotas/${mascota.id}`} style={{ display: 'inline-block', marginTop: '10px' }}>
                             Ver Detalle
                         </Link>
+
+                        <Link to={`/mascotas/${mascota.id}/editar`} style={{ display: 'inline-block', marginTop: '10px', marginLeft: '10px' }}>
+                            Editar
+                        </Link>
                     </div>
                 ))}
             </div>

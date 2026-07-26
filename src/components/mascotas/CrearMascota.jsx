@@ -18,17 +18,11 @@ function CrearMascota() {
     const manejarCambio = (e) => {
         const { name, value } = e.target;
 
-        setMascota({
-            ...mascota,
-            [name]: value
-        });
+        setMascota({...mascota, [name]: value});
     };
 
     const manejarImagen = (e) => {
-        setMascota({
-            ...mascota,
-            imagen: e.target.files[0]
-        });
+        setMascota({...mascota, imagen: e.target.files[0]});
     };
 
     const guardarMascota = async (e) => {
@@ -123,7 +117,7 @@ function CrearMascota() {
                 <label>Tamaño:</label>
                 <select name="tamano" value={mascota.tamano} onChange={manejarCambio}>
                     <option value="">---------</option>
-                    <option value="pequeño">Pequeño</option>
+                    <option value="pequeno">Pequeño</option>
                     <option value="mediano">Mediano</option>
                     <option value="grande">Grande</option>
                     <option value="desconocido">Desconocido</option>
