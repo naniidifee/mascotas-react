@@ -30,7 +30,7 @@ const MascotaDetalle = () => {
 
   return (
     <div style={{ padding: '20px', maxWidth: '600px', margin: '0 auto' }}>
-      <Link to="/" style={{ display: 'inline-block', marginBottom: '20px' }}>
+      <Link to="/mascotas/" style={{ display: 'inline-block', marginBottom: '20px' }}>
         ← Volver al listado
       </Link>
       
