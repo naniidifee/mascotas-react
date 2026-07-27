@@ -58,6 +58,25 @@ const MascotaDetalle = () => {
     cargarComentarios();
 
     const agregarComentario = async (e) => {
+      const eliminarComentario = async (comentarioId) => {
+
+    try {
+
+        await mascotasApi.delete(`comentarios/${comentarioId}/`);
+
+        cargarComentarios();
+
+    } catch (error) {
+
+        if (error.response?.status === 404) {
+            alert("Comentario no encontrado.");
+        } else {
+            alert("Error al eliminar comentario.");
+        }
+
+        console.log(error.response?.data);
+    }
+};
 
     e.preventDefault();
 
