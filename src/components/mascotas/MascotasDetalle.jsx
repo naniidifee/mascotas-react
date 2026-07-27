@@ -7,13 +7,16 @@ const MascotaDetalle = () => {
   const [mascota, setMascota] = useState(null);
   const [cargando, setCargando] = useState(true);
   const [error, setError] = useState(null);
+  const [comentarios, setComentarios] = useState([]);
+  const [autor, setAutor] = useState("");
+  const [contenido, setContenido] = useState("");
 
   useEffect(() => {
     const obtenerDetalle = async () => {
       try {
         const respuesta = await mascotasApi.get(`mascotas/${id}/`);
         setMascota(respuesta.data);
-      } catch (error) {
+        } catch (error) {
         if (error.response?.status === 400) {
         setError("Los datos enviados no son válidos.");
         } else if (error.response?.status === 404) {
