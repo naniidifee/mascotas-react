@@ -56,6 +56,37 @@ const MascotaDetalle = () => {
 
     obtenerDetalle();
     cargarComentarios();
+
+    const agregarComentario = async (e) => {
+
+    e.preventDefault();
+
+    try {
+
+        await mascotasApi.post("comentarios/", {
+            mascota: Number(id),
+            autor,
+            contenido
+        });
+
+        setAutor("");
+        setContenido("");
+
+        cargarComentarios();
+
+    } catch (error) {
+
+        if (error.response?.status === 400) {
+            alert("Datos inválidos.");
+        } else if (error.response?.status === 404) {
+            alert("Mascota no encontrada.");
+        } else {
+            alert("Error al agregar comentario.");
+        }
+
+        console.log(error.response?.data);
+    }
+};
   }, [id]);
 
   if (cargando) return <p>Cargando detalle...</p>;
