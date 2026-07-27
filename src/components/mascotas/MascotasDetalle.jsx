@@ -24,7 +24,29 @@ const MascotaDetalle = () => {
         } else {
         setError("Ocurrió un error inesperado. Intenta nuevamente.");
         }
+        const cargarComentarios = async () => {
 
+      try {
+
+        const respuesta = await mascotasApi.get("comentarios/");
+
+        const comentariosMascota = respuesta.data.filter(
+            comentario => comentario.mascota === Number(id)
+        );
+
+        setComentarios(comentariosMascota);
+
+      } catch (error) {
+
+        if (error.response?.status === 404) {
+            alert("No se encontraron comentarios.");
+        } else {
+            alert("Error al cargar comentarios.");
+        }
+
+        console.log(error.response?.data);
+    }
+};
         console.error(error.response?.data);
       }finally {
         
