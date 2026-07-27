@@ -7,21 +7,105 @@ const MascotaDetalle = () => {
   const [mascota, setMascota] = useState(null);
   const [cargando, setCargando] = useState(true);
   const [error, setError] = useState(null);
+  const [comentarios, setComentarios] = useState([]);
+  const [autor, setAutor] = useState("");
+  const [contenido, setContenido] = useState("");
 
   useEffect(() => {
     const obtenerDetalle = async () => {
       try {
         const respuesta = await mascotasApi.get(`mascotas/${id}/`);
         setMascota(respuesta.data);
-      } catch (err) {
-        console.error('Error al obtener el detalle:', err);
-        setError('No se pudo cargar la información de la mascota.');
-      } finally {
+        } catch (error) {
+        if (error.response?.status === 400) {
+        setError("Los datos enviados no son válidos.");
+        } else if (error.response?.status === 404) {
+        setError("La mascota no fue encontrada.");
+        } else {
+        setError("Ocurrió un error inesperado. Intenta nuevamente.");
+        }
+        const cargarComentarios = async () => {
+
+      try {
+
+        const respuesta = await mascotasApi.get("comentarios/");
+
+        const comentariosMascota = respuesta.data.filter(
+            comentario => comentario.mascota === Number(id)
+        );
+
+        setComentarios(comentariosMascota);
+
+      } catch (error) {
+
+        if (error.response?.status === 404) {
+            alert("No se encontraron comentarios.");
+        } else {
+            alert("Error al cargar comentarios.");
+        }
+
+        console.log(error.response?.data);
+    }
+};
+        console.error(error.response?.data);
+      }finally {
+        
         setCargando(false);
       }
     };
 
     obtenerDetalle();
+    cargarComentarios();
+
+    const agregarComentario = async (e) => {
+      const eliminarComentario = async (comentarioId) => {
+
+    try {
+
+        await mascotasApi.delete(`comentarios/${comentarioId}/`);
+
+        cargarComentarios();
+
+    } catch (error) {
+
+        if (error.response?.status === 404) {
+            alert("Comentario no encontrado.");
+        } else {
+            alert("Error al eliminar comentario.");
+        }
+
+        console.log(error.response?.data);
+    }
+};
+
+    e.preventDefault();
+
+    try {
+
+        await mascotasApi.post("comentarios/", {
+            mascota: Number(id),
+            autor,
+            contenido
+        });
+
+        setAutor("");
+        setContenido("");
+
+        cargarComentarios();
+
+    } catch (error) {
+
+        if (error.response?.status === 400) {
+            alert("Datos inválidos.");
+        } else if (error.response?.status === 404) {
+            alert("Mascota no encontrada.");
+        } else {
+            alert("Error al agregar comentario.");
+        }
+
+        console.log(error.response?.data);
+    }
+};
   }, [id]);
 
   if (cargando) return <p>Cargando detalle...</p>;
