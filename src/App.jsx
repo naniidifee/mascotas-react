@@ -1,14 +1,27 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
-import './App.css'
-import { BrowserRouter as Router, Routes, Route, NavLink } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route, NavLink } from 'react-router-dom';
+import MascotasPage from './pages/MascotasPage';
+import MascotaDetalle from './components/mascotas/MascotasDetalle';
 
 function App() {
   return (
-    <h1>Hello word</h1>
+    <>
+      <Router>
+        <nav style={{ padding: '15px', backgroundColor: '#f5f5f5', marginBottom: '20px' }}>
+          <NavLink to={"mascotas/"} style={{ fontWeight: 'bold', textDecoration: 'none', color: '#333' }}>
+            Mascotas
+          </NavLink>
+        </nav>
+        
+        <div style={{ padding: '0 20px' }}>
+          <Routes>
+            <Route path="mascotas/" element={<MascotasPage />} />
+            <Route path="mascotas/:id" element={<MascotaDetalle />} />
+          </Routes>
+        </div>
+      </Router>
+    </>
   );
 }
 
-export default App
+export default App;
+
