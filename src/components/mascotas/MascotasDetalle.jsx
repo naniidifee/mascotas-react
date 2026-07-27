@@ -55,6 +55,7 @@ const MascotaDetalle = () => {
     };
 
     obtenerDetalle();
+    cargarComentarios();
   }, [id]);
 
   if (cargando) return <p>Cargando detalle...</p>;
