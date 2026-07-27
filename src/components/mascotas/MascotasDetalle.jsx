@@ -13,10 +13,18 @@ const MascotaDetalle = () => {
       try {
         const respuesta = await mascotasApi.get(`mascotas/${id}/`);
         setMascota(respuesta.data);
-      } catch (err) {
-        console.error('Error al obtener el detalle:', err);
-        setError('No se pudo cargar la información de la mascota.');
-      } finally {
+      } catch (error) {
+        if (error.response?.status === 400) {
+        setError("Los datos enviados no son válidos.");
+        } else if (error.response?.status === 404) {
+        setError("La mascota no fue encontrada.");
+        } else {
+        setError("Ocurrió un error inesperado. Intenta nuevamente.");
+        }
+
+        console.error(error.response?.data);
+      }finally {
+        
         setCargando(false);
       }
     };
